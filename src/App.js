@@ -6,15 +6,27 @@ import BookShelf from "./containers/BookShelf";
 import SearchBar from "./containers/SearchBar";
 
 class BooksApp extends React.Component {
-  state = {};
+  state = {
+    allBooksInLibrary:[]
+  };
+
+componentDidMount(){
+  BooksAPI.getAll().then((books)=>
+  {
+    console.log(books)
+    this.setState({
+      allBooksInLibrary:books
+    })
+  })
+}
 
   render() {
     return (
       <div className="app">
-        <Route exact path="/search">
+        <Route path="/search">
           <SearchBar />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads Books</h1>
