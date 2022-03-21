@@ -7,24 +7,26 @@ import SearchBar from "./containers/SearchBar";
 
 class BooksApp extends React.Component {
   state = {
-    allBooksInLibrary:[]
+    allBooksInLibrary: [],
   };
 
-componentDidMount(){
-  BooksAPI.getAll().then((books)=>
-  {
-    console.log(books)
-    this.setState({
-      allBooksInLibrary:books
-    })
-  })
-}
+  
+
+  loadBooks = () => {
+    BooksAPI.getAll().then((books) => {
+      this.setState({
+        allBooksInLibrary: books,
+      });
+    });
+  };
+
+ 
 
   render() {
     return (
       <div className="app">
         <Route path="/search">
-          <SearchBar />
+          <SearchBar loadBooks={this.loadBooks} books={this.state.allBooksInLibrary } />
         </Route>
         <Route exact path="/">
           <div className="list-books">
