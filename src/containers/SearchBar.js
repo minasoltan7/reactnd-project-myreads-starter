@@ -8,6 +8,21 @@ export default class SearchBar extends Component {
     console.log(this.props.books);
   }
 
+  state={
+    bookToShow:"",
+    query:""
+  }
+
+  handleQuery=(query)=>{
+    console.log(query)
+    this.setState(()=>({
+
+      query:query
+    }))
+    console.log(this.state)
+
+}
+
   render() {
     return (
       <div className="search-books">
@@ -16,10 +31,10 @@ export default class SearchBar extends Component {
             <button className="close-search">Close</button>
           </Link>
           <div className="search-books-input-wrapper">
-            {/* {this.props.books.map((book) => ({
-              // PUT LOGIC HEREEEEE
+            {/* {this.props.books.filter((book) => ({
+              // PUT 
             }))} */}
-            <input type="text" placeholder="Search by title or author" />
+            <input type="text" placeholder="Search by title or author" value={this.state.query} onInput={(event)=>this.handleQuery(event.target.value)} />
           </div>
         </div>
         <div className="search-books-results">
