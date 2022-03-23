@@ -14,14 +14,14 @@ class ShelfUpdate extends Component {
             }
         }
 
-        // if (typeof this.props.book.shelf === "undefined") {
-        //     for (let shelfBook of this.props.shelfBooks) {
-        //         if (shelfBook.id === this.props.book.id) {
-        //             Shelf = shelfBook.shelf
-        //             break
-        //         }
-        //     }
-        // }
+        if (typeof this.props.book.shelf === "undefined") {
+            for (let shelfBook of this.props.shelfBooks) {
+                if (shelfBook.id === this.props.book.id) {
+                    Shelf = shelfBook.shelf
+                    break
+                }
+            }
+        }
 
         return (
             <div className="book-shelf-changer">

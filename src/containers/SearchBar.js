@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Book from "./Book";
 import * as BooksAPI from "../BooksAPI";
 import ShelfUpdate from "./ShelfUpdate"
 
@@ -14,9 +13,6 @@ export default class SearchBar extends Component {
     this.setState(() => ({
       query: query,
     }));
-  };
-
-  render() {
     if (this.state.query) {
       BooksAPI.search(this.state.query).then((book) =>
         this.setState({
@@ -24,6 +20,9 @@ export default class SearchBar extends Component {
         })
       );
     }
+  };
+
+  render() {
 
     return (
       <div className="search-books">
@@ -52,7 +51,7 @@ export default class SearchBar extends Component {
                                                   shelfBooks={this.props.shelfBooks}
                                                   book={book}
                                                   updateShelf={this.props.updateShelf}
-                                                  books={this.state.searchedBooks} />
+                                                  books={this.state.bookToShow} />
                                           </div>
                                           <div className="book-title">{book.title}</div>
                                           <div className="book-authors">{book.authors}</div>

@@ -37,7 +37,7 @@ class BooksApp extends React.Component {
         <Route exact path="/search">
           <SearchBar
             updateShelf={this.updateShelf}
-            BookShelfs= {this.state.allBooks} />
+            shelfBooks= {this.state.allBooks} />
         </Route>
         <Route exact path="/">
           <div className="list-books">
